@@ -1,13 +1,3 @@
-Description
------------
-
-Mailjet API Zend Service.
-
-Work in progres....
-
-License
-----------
-
 _ZendService_Mailjet_ is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
 
 Copyright (c) 2012 Arnaud Ligny
