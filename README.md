@@ -3,7 +3,28 @@ Description
 
 Mailjet API Zend Service.
 
-Work in progres....
+_Work in progres...._
+
+Mailjet API documentation: https://fr.mailjet.com/docs/api
+
+
+How to use
+----------
+
+```
+<?php
+use ZendService\Mailjet\Mailjet as Mailjet;
+
+try {
+    $mj = New Mailjet('key', 'secret_key');
+    // user infos
+    $userInfos = $mj->userGetInfos();
+    echo $userInfos->firstname;
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+```
+
 
 License
 ----------
