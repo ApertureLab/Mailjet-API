@@ -14,21 +14,21 @@ use Zend\Http\Request as HttpRequest;
  * @subpackage Mailjet
  */
 class Mailjet
-{   
+{
     /**
      * Your Mailjet API key
      *
      * @var string
      */
     protected $apiKey;
-    
+
     /**
      * Your Mailjet API secret key
      *
      * @var string
      */
     protected $apiSecretKey;
-    
+
     /**
      * Options
      *
@@ -40,12 +40,12 @@ class Mailjet
         'version'  => 0.1,
         'output'   => 'json',
     );
-    
+
     /**
      * @var HttpClient
      */
     protected $httpClient = null;
-    
+
     /**
      * Performs object initializations
      *
@@ -59,17 +59,16 @@ class Mailjet
         $this->setHttpClient($httpClient ?: new HttpClient)
             ->setAuth($apiKey, $apiSecretKey);
     }
-    
+
     /**
      * @param HttpClient $httpClient
-     * @return Mailjet
+     * @return HttpClient
      */
     public function setHttpClient(HttpClient $httpClient)
     {
-        $this->httpClient = $httpClient;
-        return $this;
+        return $this->httpClient = $httpClient;
     }
-    
+
     /**
      * @return HttpClient
      */
@@ -77,7 +76,7 @@ class Mailjet
     {
         return $this->httpClient;
     }
-    
+
     public function execute($apiMethod, array $params = array(), $method = 'GET')
     {
         // ie: api.mailjet.com/0.1/methodFunction?option=value
@@ -88,39 +87,39 @@ class Mailjet
             '{{version}}'  => $this->options['version'],
         ));
 
+        $params = array_merge($params, array('output' => $this->options['output']));
+
         $request = new HttpRequest;
         $request->setUri($uri . $apiMethod);
 
         if (strtoupper($method) == 'GET') {
-            $request->setMethod(Request::METHOD_GET);
+            $request->setMethod(HttpRequest::METHOD_GET);
             $request->getQuery()->fromArray($params);
+            $response = $this->httpClient
+                ->setMethod(HttpRequest::METHOD_GET)->send($request);
         }
         elseif (strtoupper($method) == 'POST') {
-            $request->setMethod(Request::METHOD_POST);
+            $request->setMethod(HttpRequest::METHOD_POST);
             $request->getPost()->fromArray($params);
+            $response = $this->httpClient
+                ->setMethod(HttpRequest::METHOD_POST)->send($request);
         }
 
-        $response = $this->httpClient->send($request);
-
-        // DEBUG
-        Zend_Debug::dump($response);
-        die();
-        
         if ($response->isServerError() || $response->isClientError()) {
             throw new Exception\RuntimeException('An error occurred sending request. Status code: '
                                                  . $response->getStatusCode());
         }
 
-        return $response;
+        return $response->getContent();
     }
-    
+
     /**
      * Adds a contact to a list
      */
-    public function listAddcontact(string $email, int $listId, $force = false)
+    public function listAddcontact($email, $listId, $force = true)
     {
         static $apiMethod = 'listsAddcontact';
-        
+
         $response = $this->execute(
             $apiMethod,
             array(
@@ -130,7 +129,73 @@ class Mailjet
             ),
             'POST'
         );
-        
-        return $response->contact_id;
+
+        return json_decode($response)->contact_id;
+    }
+    
+    /**
+     * Get user infos
+     */
+    public function userGetInfos()
+    {
+        static $apiMethod = 'userInfos';
+
+        $response = $this->execute(
+            $apiMethod,
+            array(),
+            'GET'
+        );
+
+        return json_decode($response)->infos;
+    }
+
+    /**
+     * Get all lists
+     */
+    public function listGetAll()
+    {
+        static $apiMethod = 'listsAll';
+
+        $response = $this->execute(
+            $apiMethod,
+            array(),
+            'GET'
+        );
+
+        return json_decode($response)->lists;
+    }
+    
+    /**
+     * Get domains list
+     */
+    public function userGetDomains()
+    {
+        static $apiMethod = 'userDomainlist';
+
+        $response = $this->execute(
+            $apiMethod,
+            array(),
+            'GET'
+        );
+
+        return json_decode($response)->domains;
+    }
+    
+    /**
+     * Get contact infos
+     */
+    public function contactGetInfos($email)
+    {
+        static $apiMethod = 'contactInfos';
+
+        $response = $this->execute(
+            $apiMethod,
+            array(
+                'contact' => $email,
+            ),
+            'GET'
+        );
+
+        return json_decode($response)->contact;
     }
 }
