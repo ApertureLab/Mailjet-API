@@ -1,9 +1,9 @@
 Description
 -----------
 
-Mailjet API Zend Service.
+_ZendService_Mailjet_ provides a simple PHP library for the Mailjet API.
 
-_Work in progres...._
+*Work in progress...*
 
 Mailjet API documentation: https://fr.mailjet.com/docs/api
 
