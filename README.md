@@ -3,10 +3,6 @@ Description
 
 _ZendService_Mailjet_ provides a simple PHP library for the Mailjet API.
 
-*Work in progress...*
-
-Mailjet API documentation: https://fr.mailjet.com/docs/api
-
 
 How to use
 ----------
@@ -24,6 +20,10 @@ try {
     echo $e->getMessage();
 }
 ```
+
+*Work in progress...*
+
+Mailjet API documentation: http://www.mailjet.com/docs/api
 
 
 License
