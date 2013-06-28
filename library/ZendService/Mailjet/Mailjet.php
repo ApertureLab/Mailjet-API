@@ -146,6 +146,7 @@ class Mailjet
          * Else request API directly
          */
         else {
+            // use helpMethod method to know the request type
             if ($method != 'helpMethod') {
                 $helpMethod = $this->helpMethod($method);
                 if ($helpMethod !== NULL && $helpMethod->status == 'OK') {
@@ -167,6 +168,9 @@ class Mailjet
                         'Invalid method "' . $method . '"'
                     );
                 }
+            }
+            else {
+                return $this->helpMethod($method);
             }
         }
     }
