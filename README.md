@@ -12,16 +12,16 @@ How to use
 use ZendService\Mailjet\Mailjet as Mailjet;
 
 try {
-    $mj = New Mailjet('key', 'secret_key');
+    $mailjet = New Mailjet('key', 'secret_key');
     // user infos
-    $userInfos = $mj->userGetInfos();
-    echo $userInfos->firstname;
+    $userInfos = $mailjet->user->infos();
+    if ($userInfos->status == 'OK') {
+        echo $userInfos->infos->username;
+    }
 } catch (Exception $e) {
     echo $e->getMessage();
 }
 ```
-
-*Work in progress...*
 
 Mailjet API documentation: http://www.mailjet.com/docs/api
 
@@ -31,7 +31,7 @@ License
 
 _ZendService_Mailjet_ is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
 
-Copyright (c) 2012 Arnaud Ligny
+Copyright (c) 2012-2013 Arnaud Ligny
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
