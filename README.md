@@ -9,10 +9,10 @@ How to use
 
 ```
 <?php
-use ZendService\Mailjet\Mailjet as Mailjet;
+require_once 'Zend/Service/Mailjet.php';
 
 try {
-    $mailjet = New Mailjet('key', 'secret_key');
+    $mailjet = New Zend_Service_Mailjet('key', 'secret_key');
     // user infos
     $userInfos = $mailjet->user->infos();
     if ($userInfos->status == 'OK') {
