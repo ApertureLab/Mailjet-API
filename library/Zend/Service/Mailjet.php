@@ -1,23 +1,21 @@
 <?php
 /**
- * ZendService\Mailjet
+ * Zend_Service_Mailjet
  *
- * @link      https://github.com/Narno/ZendService_Mailjet
+ * @link      https://github.com/Narno/ZendService_Mailjet/tree/zf1
  * @copyright Copyright (c) 2012-2013 Arnaud Ligny
  * @license   http://opensource.org/licenses/MIT MIT license
  * @package   Zend_Service
  */
 
-namespace ZendService\Mailjet;
-
-use Zend\Http;
+require_once 'Zend/Http/Client.php';
 
 /**
  * @category   Zend
  * @package    Zend_Service
  * @subpackage Mailjet
  */
-class Mailjet
+class Zend_Service_Mailjet
 {
     /**
      * Mailjet API key
@@ -83,11 +81,11 @@ class Mailjet
      * @param string $apiSecretKey
      * @param null|Http\Client $httpClient
      */
-    public function __construct($apiKey, $apiSecretKey, Http\Client $httpClient = null)
+    public function __construct($apiKey, $apiSecretKey, Zend_Http_Client $httpClient = null)
     {
         $this->apiKey       = (string) $apiKey;
         $this->apiSecretKey = (string) $apiSecretKey;
-        $this->setHttpClient($httpClient ?: new Http\Client)
+        $this->setHttpClient($httpClient ?: new Zend_Http_Client)
             ->setAuth($apiKey, $apiSecretKey);
     }
 
@@ -102,7 +100,7 @@ class Mailjet
     {
         $category = strtolower($category);
         if (!in_array($category, $this->methodCategories)) {
-            throw new Exception\RuntimeException(
+            throw new Exception(
                 'Invalid method category "' . $category . '"'
             );
         }
@@ -116,7 +114,7 @@ class Mailjet
      * @param  string $method
      * @param  array $params
      * @return mixed
-     * @throws Exception\RuntimeException if unable to find method
+     * @throws Exception if unable to find method
      */
     public function __call($method, $params)
     {
@@ -126,7 +124,7 @@ class Mailjet
          * If method category is not setted
          */
         if (empty($this->methodCategory)) {
-            throw new Exception\RuntimeException(
+            throw new Exception(
                 'Invalid method "' . $method . '"'
             );
         }
@@ -157,13 +155,13 @@ class Mailjet
                         return $this->requestPost($method, $params);
                     }
                     else {
-                        throw new Exception\RuntimeException(
+                        throw new Exception(
                             'Invalid HTTP method "' . $methodRequestType . '"'
                         );
                     }
                 }
                 else {
-                    throw new Exception\RuntimeException(
+                    throw new Exception(
                         'Invalid method "' . $method . '"'
                     );
                 }
@@ -177,7 +175,7 @@ class Mailjet
      * @param Http\Client $httpClient
      * @return Http\Client
      */
-    public function setHttpClient(Http\Client $httpClient)
+    public function setHttpClient(Zend_Http_Client $httpClient)
     {
         return $this->httpClient = $httpClient;
     }
@@ -213,24 +211,21 @@ class Mailjet
 
         $params = array_merge($params, array('output' => self::OUTPUT_FORMAT));
 
-        $request = new Http\Request;
-        $request->setUri($uri . $apiMethod);
+        $this->getHttpClient()->setUri($uri . $apiMethod);
 
         if (strtoupper($method) == 'GET') {
-            $request->setMethod(Http\Request::METHOD_GET);
-            $request->getQuery()->fromArray($params);
-            $response = $this->getHttpClient()
-                ->setMethod(Http\Request::METHOD_GET)->send($request);
+            $this->getHttpClient()->setMethod(Zend_Http_Client::GET);
+            $this->getHttpClient()->setParameterGet($params);
+            $response = $this->getHttpClient()->request();
         }
         elseif (strtoupper($method) == 'POST') {
-            $request->setMethod(Http\Request::METHOD_POST);
-            $request->getPost()->fromArray($params);
-            $response = $this->getHttpClient()
-                ->setMethod(Http\Request::METHOD_POST)->send($request);
+            $this->getHttpClient()->setMethod(Zend_Http_Client::POST);
+            $this->getHttpClient()->setParameterPosty($params);
+            $response = $this->getHttpClient()->request();
         }
 
-        if ($response->isServerError() || $response->isClientError()) {
-            throw new Exception\RuntimeException('An error occurred sending request. Status code: ' . $response->getStatusCode());
+        if ($response->isError()) {
+            throw new Exception('An error occurred sending request. Status code: ' . $response->getStatusCode());
         }
 
         return json_decode($response->getBody());
