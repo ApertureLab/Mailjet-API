@@ -118,9 +118,19 @@ class Mailjet
      * @return mixed
      * @throws Exception\RuntimeException if unable to find method
      */
-    public function __call($method, $params)
-    {
+    public function __call($method, $args)
+     {
+        $params = array();
+
         $method = ucfirst($method);
+        if (!empty($args)) {
+            $params = $args[0];
+            if (!is_array($params)) {
+                throw new Exception(
+                    '$params should be an array'
+                );
+            }
+        }
 
         /**
          * If method category is not setted
