@@ -116,9 +116,19 @@ class Zend_Service_Mailjet
      * @return mixed
      * @throws Exception if unable to find method
      */
-    public function __call($method, $params)
+    public function __call($method, $args)
     {
+        $params = array();
+
         $method = ucfirst($method);
+        if (!empty($args)) {
+            $params = $args[0];
+            if (!is_array($params)) {
+                throw new Exception(
+                    '$params should be an array'
+                );
+            }
+        }
 
         /**
          * If method category is not setted
@@ -220,12 +230,12 @@ class Zend_Service_Mailjet
         }
         elseif (strtoupper($method) == 'POST') {
             $this->getHttpClient()->setMethod(Zend_Http_Client::POST);
-            $this->getHttpClient()->setParameterPosty($params);
+            $this->getHttpClient()->setParameterPost($params);
             $response = $this->getHttpClient()->request();
         }
 
         if ($response->isError()) {
-            throw new Exception('An error occurred sending request. Status code: ' . $response->getStatusCode());
+            throw new Exception('An error occurred sending request. Status code: ' . $response->getStatus());
         }
 
         return json_decode($response->getBody());
