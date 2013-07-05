@@ -4,6 +4,15 @@ Description
 _ZendService_Mailjet_ provides a simple PHP library for the Mailjet API.
 
 
+Dependencies
+------------
+
+* PHP 5.2.4
+* Zend Framework: http://www.framework.zend.com/downloads/latest#ZF1
+
+There also a version available for the Zend Framework 2: https://github.com/Narno/ZendService_Mailjet/tree/master.
+
+
 How to use
 ----------
 
