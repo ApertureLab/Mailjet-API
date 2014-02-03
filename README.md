@@ -16,7 +16,7 @@ There also a version available for the Zend Framework 2: https://github.com/Narn
 How to use
 ----------
 
-```
+```php
 <?php
 require_once 'Zend/Service/Mailjet.php';
 
