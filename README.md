@@ -1,7 +1,7 @@
 Description
 -----------
 
-_ZendService_Mailjet_ provides a simple PHP library for the Mailjet API.
+*ZendService_Mailjet* provides a simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api).
 
 
 Dependencies
@@ -10,7 +10,7 @@ Dependencies
 * PHP 5.3+
 * Zend\Http component (Zend Framework 2): https://github.com/zendframework/Component_ZendHttp
 
-There also a version available for the Zend Framework 1: https://github.com/Narno/ZendService_Mailjet/tree/zf1.
+Note: There is also a version available for the [Zend Framework 1](https://github.com/Narno/ZendService_Mailjet/tree/zf1).
 
 
 How to use
@@ -22,9 +22,10 @@ use ZendService\Mailjet\Mailjet as Mailjet;
 
 try {
     $mailjet = New Mailjet('key', 'secret_key');
-    // user infos
+    // fetches user's infos...
     $userInfos = $mailjet->user->infos();
     if ($userInfos->status == 'OK') {
+        // ...and displays username
         echo $userInfos->infos->username;
     }
 } catch (Exception $e) {
@@ -38,12 +39,6 @@ Mailjet API documentation: http://www.mailjet.com/docs/api
 License
 ----------
 
-_ZendService_Mailjet_ is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
+*ZendService_Mailjet* is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
 
-Copyright (c) 2012-2013 Arnaud Ligny
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Copyright (c) 2012-2014 Arnaud Ligny
