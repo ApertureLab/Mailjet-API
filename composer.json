@@ -1,0 +1,19 @@
+{
+    "name": "narno/zendservice-mailjet",
+    "description": "Simple PHP library for the Mailjet API.",
+    "type": "library",
+    "keywords": [
+        "mailjet",
+        "zf2"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "ZendService\\Mailjet\\": "library/"
+        }
+    },
+    "require": {
+        "php": ">=5.3",
+        "zendframework/zend-http": ">=2.1"
+    }
+}
