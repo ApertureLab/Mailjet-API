@@ -8,13 +8,22 @@ Dependencies
 ------------
 
 * PHP 5.3+
-* Zend\Http component (Zend Framework 2): https://github.com/zendframework/Component_ZendHttp
+* [Zend\Http](https://github.com/zendframework/Component_ZendHttp) component ([Zend Framework 2](https://github.com/zendframework/zf2))
 
 Note: There is also a version available for the [Zend Framework 1](https://github.com/Narno/ZendService_Mailjet/tree/zf1).
 
 
-How to use
-----------
+Installation
+------------
+
+You can install this component using [Composer](https://getcomposer.org/) with following commands:
+
+    curl -s https://getcomposer.org/installer | php
+    php composer.phar install
+
+
+Usage
+-----
 
 ```php
 <?php
