@@ -27,6 +27,11 @@ Usage
 
 ```php
 <?php
+// Composer autoloading
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    $loader = include __DIR__ . '/vendor/autoload.php';
+}
+
 use ZendService\Mailjet\Mailjet as Mailjet;
 
 try {
@@ -34,8 +39,8 @@ try {
     // fetches user's infos...
     $userInfos = $mailjet->user->infos();
     if ($userInfos->status == 'OK') {
-        // ...and displays username
-        echo $userInfos->infos->username;
+        // ...and displays
+        print_r($userInfos->infos);
     }
 } catch (Exception $e) {
     echo $e->getMessage();
