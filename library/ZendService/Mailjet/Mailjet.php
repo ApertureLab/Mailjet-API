@@ -126,7 +126,7 @@ class Mailjet
         if (!empty($args)) {
             $params = $args[0];
             if (!is_array($params)) {
-                throw new Exception(
+                throw new \Exception(
                     '$params should be an array'
                 );
             }
