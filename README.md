@@ -8,7 +8,7 @@ Dependencies
 ------------
 
 * PHP 5.2.4
-* Zend Framework: http://www.framework.zend.com/downloads/latest#ZF1
+* [Zend Framework](http://www.framework.zend.com/downloads/latest#ZF1)
 
 Note: There is also a version available for the [Zend Framework 2](https://github.com/Narno/ZendService_Mailjet/tree/master).
 
