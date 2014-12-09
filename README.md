@@ -8,7 +8,7 @@ Dependencies
 ------------
 
 * PHP 5.3+
-* [Zend\Http](https://github.com/zendframework/Component_ZendHttp) component ([Zend Framework 2](https://github.com/zendframework/zf2))
+* [Zend\Http](https://github.com/zendframework/Component_ZendHttp)
 
 Note: There is also a version available for the [Zend Framework 1](https://github.com/Narno/ZendService_Mailjet/tree/zf1).
 
@@ -16,10 +16,13 @@ Note: There is also a version available for the [Zend Framework 1](https://githu
 Installation
 ------------
 
-You can install this component using [Composer](https://getcomposer.org/) with following commands:
+The recommended way is through [Composer](https://getcomposer.org).
 
-    curl -s https://getcomposer.org/installer | php
-    php composer.phar install
+    {
+        "require": {
+            "narno/zendservice-mailjet": "dev-master"
+        }
+    }
 
 
 Usage
@@ -32,7 +35,7 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
     $loader = include __DIR__ . '/vendor/autoload.php';
 }
 
-use ZendService\Mailjet\Mailjet as Mailjet;
+use ZendService\Mailjet\Mailjet;
 
 try {
     $mailjet = New Mailjet('key', 'secret_key');
