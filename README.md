@@ -1,40 +1,29 @@
-Description
------------
+## Description
 
 *ZendService_Mailjet* provides a simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api).
 
-
-Dependencies
-------------
+## Dependencies
 
 * PHP 5.3+
 * [Zend\Http](https://github.com/zendframework/Component_ZendHttp)
 
 Note: There is also a version available for the [Zend Framework 1](https://github.com/Narno/ZendService_Mailjet/tree/zf1).
 
-
-Installation
-------------
+## Installation
 
 The recommended way is through [Composer](https://getcomposer.org).
-
-    {
-        "require": {
-            "narno/zendservice-mailjet": "dev-master"
-        }
+```
+{
+    "require": {
+        "narno/zendservice-mailjet": "dev-master"
     }
+}
+```
 
-
-Usage
------
+## Usage
 
 ```php
 <?php
-// Composer autoloading
-if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    $loader = include __DIR__ . '/vendor/autoload.php';
-}
-
 use ZendService\Mailjet\Mailjet;
 
 try {
@@ -50,12 +39,10 @@ try {
 }
 ```
 
-Mailjet API documentation: http://www.mailjet.com/docs/api
+Mailjet API documentation: http://www.mailjet.com/docs/api.
 
-
-License
-----------
+## License
 
 *ZendService_Mailjet* is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
 
-Copyright (c) 2012-2014 Arnaud Ligny
+Copyright (c) 2012-2016 Arnaud Ligny
