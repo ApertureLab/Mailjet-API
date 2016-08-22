@@ -5,14 +5,14 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
     $loader = include __DIR__.'/vendor/autoload.php';
 }
 
-use Narno\Mailjet\Api as MailjetApi;
 use Dotenv\Dotenv;
+use Narno\Mailjet\Api as MailjetApi;
 
 try {
     // load .env
     $dotenv = (new Dotenv(__DIR__))->load();
     // instantiate
-    $api = New MailjetApi(getenv('MAILJET_API_KEY'), getenv('MAILJET_API_SECRET'));
+    $api = new MailjetApi(getenv('MAILJET_API_KEY'), getenv('MAILJET_API_SECRET'));
     // fetches user's infos...
     $userInfos = $api->user->infos();
     if ($userInfos->status == 'OK') {
