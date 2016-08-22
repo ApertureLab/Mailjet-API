@@ -13,7 +13,7 @@ use Zend\Http\Request as HttpRequest;
 use Zend\Http\Response as HttpResponse;
 
 /**
- * Class Api
+ * Class Api.
  */
 class Api
 {
@@ -77,8 +77,8 @@ class Api
     /**
      * Performs object initializations.
      *
-     * @param string           $apiKey
-     * @param string           $apiSecretKey
+     * @param string          $apiKey
+     * @param string          $apiSecretKey
      * @param null|HttpClient $httpClient
      */
     public function __construct($apiKey, $apiSecretKey, HttpClient $httpClient = null)
@@ -209,9 +209,9 @@ class Api
      * Perform an HTTP GET or POST request
      * (GET by default).
      *
-     * @param  string $apiMethod
-     * @param  array $params
-     * @param  string $method ('GET' or 'POST')
+     * @param string $apiMethod
+     * @param array  $params
+     * @param string $method    ('GET' or 'POST')
      *
      * @return object Response
      */
@@ -258,7 +258,7 @@ class Api
      * Perform an HTTP GET request.
      *
      * @param string $apiMethod
-     * @param array $params
+     * @param array  $params
      *
      * @return object Response
      */
@@ -271,7 +271,7 @@ class Api
      * Perform an HTTP POST request.
      *
      * @param string $apiMethod
-     * @param array $params
+     * @param array  $params
      *
      * @return object Response
      */
