@@ -20,7 +20,7 @@ $ composer require narno/mailjet-api
 
 ```php
 <?php
-use use Narno\Mailjet\Api as MailjetApi;
+use Narno\Mailjet\Api as MailjetApi;
 
 try {
     $api = New MailjetApi('key', 'secret_key');
