@@ -1,12 +1,10 @@
 {
-  "name": "narno/zendservice-mailjet",
+  "name": "narno/mailjet-api",
+  "replace": {"narno/zendservice-mailjet": "self.version"},
   "description": "Simple PHP library for the Mailjet API.",
-  "type": "library",
-  "keywords": [
-    "mailjet",
-    "zf2"
-  ],
+  "keywords": ["mailjet", "api", "zf2"],
   "license": "MIT",
+  "type": "library",
   "authors": [
     {
       "name": "Arnaud Ligny",
@@ -15,13 +13,16 @@
       "role": "Developer"
     }
   ],
+  "require": {
+    "php": "^5.4|^7.0",
+    "zendframework/zend-http": "^2.5"
+  },
+  "require-dev": {
+    "vlucas/phpdotenv": "^2.3"
+  },
   "autoload": {
     "psr-0": {
       "ZendService\\Mailjet\\": "library/"
     }
-  },
-  "require": {
-    "php": ">=5.3",
-    "zendframework/zend-http": ">=2.1"
   }
 }
