@@ -1,18 +1,16 @@
 <?php
-/**
- * ZendService\Mailjet.
+/*
+ * Copyright (c) Arnaud Ligny <arnaud@ligny.org>
  *
- * @link      https://github.com/Narno/ZendService_Mailjet
- *
- * @copyright Copyright (c) 2012-2013 Arnaud Ligny
- * @license   http://opensource.org/licenses/MIT MIT license
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 namespace ZendService\Mailjet;
 
 use Zend\Http;
 
 /**
- * @category   Zend
+ * Class Mailjet
  */
 class Mailjet
 {
@@ -93,7 +91,7 @@ class Mailjet
      *
      * @param string $category
      *
-     * @throws Exception If method not in method categories list
+     * @throws Exception\RuntimeException If method not in method categories list
      *
      * @return self
      */
@@ -114,9 +112,9 @@ class Mailjet
      * Method overloading.
      *
      * @param string $method
-     * @param array  $params
+     * @param array  $args
      *
-     * @throws Exception\RuntimeException if unable to find method
+     * @throws Exception\RuntimeException
      *
      * @return mixed
      */
@@ -128,14 +126,14 @@ class Mailjet
         if (!empty($args)) {
             $params = $args[0];
             if (!is_array($params)) {
-                throw new \Exception(
+                throw new Exception\RuntimeException(
                     '$params should be an array'
                 );
             }
         }
 
         /*
-         * If method category is not setted
+         * If method category is not set
          */
         if (empty($this->methodCategory)) {
             throw new Exception\RuntimeException(
@@ -206,9 +204,9 @@ class Mailjet
      * Perform an HTTP GET or POST request
      * (GET by default).
      *
-     * @param  string API method
-     * @param  array parameters
-     * @param  string HTTP method ('GET' or 'POST')
+     * @param  string $apiMethod
+     * @param  array $params
+     * @param  string $method ('GET' or 'POST')
      *
      * @return object Response
      */
@@ -249,8 +247,8 @@ class Mailjet
     /**
      * Perform an HTTP GET request.
      *
-     * @param string API method
-     * @param array parameters
+     * @param string $apiMethod
+     * @param array $params
      *
      * @return object Response
      */
@@ -262,8 +260,8 @@ class Mailjet
     /**
      * Perform an HTTP POST request.
      *
-     * @param string API method
-     * @param array parameters
+     * @param string $apiMethod
+     * @param array $params
      *
      * @return object Response
      */
@@ -275,7 +273,9 @@ class Mailjet
     /**
      * Get description of a method.
      *
-     * @param string API method
+     * @param string $name
+     *
+     * @return HttpResponse
      */
     public function helpMethod($name)
     {
