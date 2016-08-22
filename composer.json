@@ -21,8 +21,8 @@
     "vlucas/phpdotenv": "^2.3"
   },
   "autoload": {
-    "psr-0": {
-      "ZendService\\Mailjet\\": "library/"
+    "psr-4": {
+      "Narno\\Mailjet\\": "src"
     }
   }
 }

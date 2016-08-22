@@ -6,16 +6,16 @@
  * file that was distributed with this source code.
  */
 
-namespace ZendService\Mailjet;
+namespace Narno\Mailjet;
 
 use Zend\Http\Client as HttpClient;
 use Zend\Http\Request as HttpRequest;
 use Zend\Http\Response as HttpResponse;
 
 /**
- * Class Mailjet
+ * Class Api
  */
-class Mailjet
+class Api
 {
     /**
      * Mailjet API key.
