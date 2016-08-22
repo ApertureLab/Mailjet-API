@@ -215,7 +215,7 @@ class Mailjet
      *
      * @return object Response
      */
-    public function request($apiMethod, array $params = [], $method = 'GET')
+    protected function request($apiMethod, array $params = [], $method = 'GET')
     {
         // ie: api.mailjet.com/0.1/methodFunction?option=value
 
@@ -287,7 +287,7 @@ class Mailjet
      *
      * @return HttpResponse
      */
-    public function helpMethod($name)
+    protected function helpMethod($name)
     {
         static $apiMethod = 'HelpMethod';
         $response = $this->requestGet(
