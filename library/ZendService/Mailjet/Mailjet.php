@@ -5,9 +5,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace ZendService\Mailjet;
 
-use Zend\Http;
+use Zend\Http\Client as HttpClient;
+use Zend\Http\Request as HttpRequest;
+use Zend\Http\Response as HttpResponse;
 
 /**
  * Class Mailjet
@@ -76,13 +79,13 @@ class Mailjet
      *
      * @param string           $apiKey
      * @param string           $apiSecretKey
-     * @param null|Http\Client $httpClient
+     * @param null|HttpClient $httpClient
      */
-    public function __construct($apiKey, $apiSecretKey, Http\Client $httpClient = null)
+    public function __construct($apiKey, $apiSecretKey, HttpClient $httpClient = null)
     {
         $this->apiKey = (string) $apiKey;
         $this->apiSecretKey = (string) $apiSecretKey;
-        $this->setHttpClient($httpClient ?: new Http\Client())
+        $this->setHttpClient($httpClient ?: new HttpClient())
             ->setAuth($apiKey, $apiSecretKey);
     }
 
@@ -176,16 +179,18 @@ class Mailjet
                 }
             }
         }
+
+        return false;
     }
 
     /**
      * Set HTTP client.
      *
-     * @param Http\Client $httpClient
+     * @param HttpClient $httpClient
      *
-     * @return Http\Client
+     * @return HttpClient
      */
-    public function setHttpClient(Http\Client $httpClient)
+    public function setHttpClient(HttpClient $httpClient)
     {
         return $this->httpClient = $httpClient;
     }
@@ -193,7 +198,7 @@ class Mailjet
     /**
      * Get HTTP client.
      *
-     * @return Http\Client
+     * @return HttpClient
      */
     public function getHttpClient()
     {
@@ -222,19 +227,24 @@ class Mailjet
 
         $params = array_merge($params, ['output' => self::OUTPUT_FORMAT]);
 
-        $request = new Http\Request();
+        $request = new HttpRequest();
         $request->setUri($uri.$apiMethod);
 
+        /* @var HttpResponse $response  */
         if (strtoupper($method) == 'GET') {
-            $request->setMethod(Http\Request::METHOD_GET);
+            $request->setMethod(HttpRequest::METHOD_GET);
             $request->getQuery()->fromArray($params);
             $response = $this->getHttpClient()
-                ->setMethod(Http\Request::METHOD_GET)->send($request);
+                ->setMethod(HttpRequest::METHOD_GET)->send($request);
         } elseif (strtoupper($method) == 'POST') {
-            $request->setMethod(Http\Request::METHOD_POST);
+            $request->setMethod(HttpRequest::METHOD_POST);
             $request->getPost()->fromArray($params);
             $response = $this->getHttpClient()
-                ->setMethod(Http\Request::METHOD_POST)->send($request);
+                ->setMethod(HttpRequest::METHOD_POST)->send($request);
+        } else {
+            throw new Exception\RuntimeException(
+                sprintf('Invalid HTTP method "%s" ("GET" or "POST" only)', $method)
+            );
         }
 
         if ($response->isServerError() || $response->isClientError()) {
