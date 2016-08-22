@@ -1,35 +1,31 @@
-## Description
+# Mailjet-API
 
-*ZendService_Mailjet* provides a simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api).
+*Mailjet-API* provides a simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api) v1.
 
 ## Dependencies
 
-* PHP 5.3+
-* [Zend\Http](https://github.com/zendframework/Component_ZendHttp)
+* PHP 5.4+
+* [zend-http](https://github.com/zendframework/zend-http)
 
-Note: There is also a version available for the [Zend Framework 1](https://github.com/Narno/ZendService_Mailjet/tree/zf1).
+Note: There is also a version available for the [Zend Framework 1](https://github.com/Narno/Mailjet-API/tree/zf1).
 
 ## Installation
 
 The recommended way is through [Composer](https://getcomposer.org).
 ```
-{
-    "require": {
-        "narno/zendservice-mailjet": "dev-master"
-    }
-}
+$ composer require narno/mailjet-api
 ```
 
 ## Usage
 
 ```php
 <?php
-use ZendService\Mailjet\Mailjet;
+use use Narno\Mailjet\Api as MailjetApi;
 
 try {
-    $mailjet = New Mailjet('key', 'secret_key');
+    $api = New MailjetApi('key', 'secret_key');
     // fetches user's infos...
-    $userInfos = $mailjet->user->infos();
+    $userInfos = $api->user->infos();
     if ($userInfos->status == 'OK') {
         // ...and displays
         print_r($userInfos->infos);
@@ -43,6 +39,6 @@ Mailjet API documentation: http://www.mailjet.com/docs/api.
 
 ## License
 
-*ZendService_Mailjet* is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
+*Mailjet-API* is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
 
 Copyright (c) 2012-2016 Arnaud Ligny
