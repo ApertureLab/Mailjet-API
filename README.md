@@ -1,7 +1,7 @@
 Description
 -----------
 
-*ZendService_Mailjet* provides a simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api).
+> Simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api).
 
 
 Dependencies
@@ -37,8 +37,8 @@ Mailjet API documentation: http://www.mailjet.com/docs/api
 
 
 License
-----------
+-------
 
-*ZendService_Mailjet* is released under the terms of the [MIT license](http://opensource.org/licenses/MIT).
+ZendService_Mailjet is a free software distributed under the terms of the [MIT license](http://opensource.org/licenses/MIT).
 
-Copyright (c) 2012-2014 Arnaud Ligny
+© [Arnaud Ligny](http://arnaudligny.fr)
