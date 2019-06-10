@@ -1,6 +1,6 @@
 # Mailjet-API
 
-> Simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api) v1.
+> A simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api) v1.
 
 [![Latest Stable Version](https://poser.pugx.org/narno/mailjet-api/version)](https://packagist.org/packages/narno/mailjet-api) [![License](https://poser.pugx.org/narno/mailjet-api/license)](https://packagist.org/packages/narno/mailjet-api)
 
@@ -43,4 +43,4 @@ try {
 
 Free software distributed under the terms of the [MIT license](http://opensource.org/licenses/MIT).
 
-© [Arnaud Ligny](http://arnaudligny.fr)
+© [Arnaud Ligny](https://arnaudligny.fr)
