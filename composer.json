@@ -3,6 +3,7 @@
   "replace": {"narno/zendservice-mailjet": "self.version"},
   "description": "Simple PHP library for the Mailjet API.",
   "keywords": ["mailjet", "api", "zf2"],
+  "homepage": "https://project.aperturelab.fr/Mailjet-API/",
   "license": "MIT",
   "type": "library",
   "authors": [
