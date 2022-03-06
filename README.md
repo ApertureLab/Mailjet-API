@@ -1,6 +1,6 @@
 # Mailjet-API
 
-> A simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api) v1.
+A simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api) v1.
 
 [![Latest Stable Version](https://poser.pugx.org/narno/mailjet-api/version)](https://packagist.org/packages/narno/mailjet-api) [![License](https://poser.pugx.org/narno/mailjet-api/license)](https://packagist.org/packages/narno/mailjet-api)
 
@@ -14,6 +14,7 @@
 ## Installation
 
 The recommended way is through [Composer](https://getcomposer.org).
+
 ```bash
 composer require narno/mailjet-api
 ```
@@ -37,7 +38,7 @@ try {
 }
 ```
 
-> Mailjet API documentation: http://www.mailjet.com/docs/api.
+> Mailjet API documentation: <http://www.mailjet.com/docs/api>.
 
 ## License
 
