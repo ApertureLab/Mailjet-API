@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ZendService\Mailjet\Exception;
+namespace ApertureLab\Mailjet\Exception;
 
 class RuntimeException extends \RuntimeException implements ExceptionInterface
 {

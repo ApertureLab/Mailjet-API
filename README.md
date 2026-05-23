@@ -1,29 +1,29 @@
-# Mailjet-API
+# Mailjet API
 
 A simple PHP library for the [Mailjet API](http://www.mailjet.com/docs/api) v1.
 
-[![Latest Stable Version](https://poser.pugx.org/narno/mailjet-api/version)](https://packagist.org/packages/narno/mailjet-api) [![License](https://poser.pugx.org/narno/mailjet-api/license)](https://packagist.org/packages/narno/mailjet-api)
+[![Latest Stable Version](https://poser.pugx.org/aperturelab/mailjet-api/version)](https://packagist.org/packages/aperturelab/mailjet-api) [![License](https://poser.pugx.org/aperturelab/mailjet-api/license)](https://packagist.org/packages/aperturelab/mailjet-api)
 
 ## Dependencies
 
 * PHP 5.4+
 * [zend-http](https://github.com/zendframework/zend-http)
 
-> Note: There is also a version available for the [Zend Framework 1](https://github.com/Narno/Mailjet-API/tree/zf1).
+> Note: There is also a version available for the [Zend Framework 1](https://github.com/ApertureLab/Mailjet-API/tree/zf1).
 
 ## Installation
 
 The recommended way is through [Composer](https://getcomposer.org).
 
 ```bash
-composer require narno/mailjet-api
+composer require aperturelab/mailjet-api
 ```
 
 ## Usage
 
 ```php
 <?php
-use Narno\Mailjet\Api as MailjetApi;
+use ApertureLab\Mailjet\Api as MailjetApi;
 
 try {
     $api = New MailjetApi('key', 'secret_key');

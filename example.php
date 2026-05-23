@@ -5,7 +5,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 }
 
 use Dotenv\Dotenv;
-use Narno\Mailjet\Api as MailjetApi;
+use ApertureLab\Mailjet\Api as MailjetApi;
 
 try {
     // load .env

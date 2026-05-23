@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Narno\Mailjet;
+namespace ApertureLab\Mailjet;
 
 use Zend\Http\Client as HttpClient;
 use Zend\Http\Request as HttpRequest;
